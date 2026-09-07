@@ -52,15 +52,24 @@ public class PlayerManager {
         return Bukkit.getOfflinePlayer(uuid).getName();
     }
 
+    public Set<UUID> getPlayers() {
+        return players;
+    }
+
+
     @Override
     public String toString() {
         StringBuilder listOfAllPlayers = new StringBuilder();
 
         for (UUID uuid : players) {
+            if (!listOfAllPlayers.isEmpty()) {
+                listOfAllPlayers.append(", ");
+            }
+
             listOfAllPlayers.append(UUIDtoName(uuid));
         }
 
-        if (listOfAllPlayers.toString().isEmpty()) {
+        if (listOfAllPlayers.isEmpty()) {
             listOfAllPlayers.append("List is empty.");
         }
 

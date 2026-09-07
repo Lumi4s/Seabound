@@ -1,4 +1,4 @@
-name: Breathing
+name: ReverseBreathing
 version: '${version}'
 
 main: io.github.reversebreathing.ReverseBreathing

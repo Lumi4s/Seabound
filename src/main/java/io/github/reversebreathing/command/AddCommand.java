@@ -7,6 +7,8 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.Player;
 
 public class AddCommand {
@@ -29,6 +31,14 @@ public class AddCommand {
                                             );
 
                                     Player player = resolver.resolve(context.getSource()).getFirst();
+
+                                    if (!player.isOp()){
+                                        context.getSource()
+                                                .getSender()
+                                                .sendMessage(Component.text("Only for operators!",
+                                                        NamedTextColor.RED));
+                                        return 0;
+                                    }
 
                                     playerManager.add(player.getUniqueId());
 

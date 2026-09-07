@@ -2,8 +2,8 @@ package io.github.reversebreathing.command;
 
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.github.reversebreathing.player.PlayerManager;
-import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.command.brigadier.Commands;
 
 public class ReverseBreathingCommand {
 
