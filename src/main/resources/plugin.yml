@@ -1,0 +1,6 @@
+name: Breathing
+version: '${version}'
+
+main: io.github.reversebreathing.ReverseBreathing
+api-version: '26.2'
+load: POSTWORLD
