@@ -1,4 +1,4 @@
-name: ReverseBreathing
+name: Seabound
 version: '${version}'
 
 main: io.github.seabound.Seabound
