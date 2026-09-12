@@ -1,6 +1,6 @@
 name: ReverseBreathing
 version: '${version}'
 
-main: io.github.reversebreathing.ReverseBreathing
+main: io.github.seabound.Seabound
 api-version: '26.2'
 load: POSTWORLD

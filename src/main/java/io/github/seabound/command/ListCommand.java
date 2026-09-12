@@ -1,8 +1,8 @@
-package io.github.reversebreathing.command;
+package io.github.seabound.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import io.github.reversebreathing.player.PlayerManager;
+import io.github.seabound.player.PlayerManager;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import net.kyori.adventure.text.Component;

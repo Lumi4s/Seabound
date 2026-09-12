@@ -1,8 +1,8 @@
-package io.github.reversebreathing.command;
+package io.github.seabound.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import io.github.reversebreathing.player.PlayerManager;
+import io.github.seabound.player.PlayerManager;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
@@ -32,7 +32,7 @@ public class AddCommand {
 
                                     Player player = resolver.resolve(context.getSource()).getFirst();
 
-                                    if (!player.isOp()){
+                                    if (!player.isOp()) {
                                         context.getSource()
                                                 .getSender()
                                                 .sendMessage(Component.text("Only for operators!",

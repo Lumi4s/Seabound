@@ -1,6 +1,6 @@
 # **Reverse Breathing**
 
-Reverse Breathing is a simple plugin that reverses the *breathing system* for selected players.
+Seabound is a simple plugin that reverses the *breathing system* for selected players.
 
 ### Features
 
@@ -20,6 +20,7 @@ Reverse Breathing is a simple plugin that reverses the *breathing system* for se
 * `/breathing list` - Display all players currently using the reverse breathing system.
 
 ### WIP:
+
 * Surface gliding.
 * Accelerated swimming.
 * Adjustable parameters for gliding, swimming, and air consumption.

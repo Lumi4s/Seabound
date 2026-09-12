@@ -1,4 +1,4 @@
-package io.github.reversebreathing.service;
+package io.github.seabound.service;
 
 import org.bukkit.damage.DamageSource;
 import org.bukkit.damage.DamageType;
@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
-public final class ReverseBreathingService {
+public final class SeaboundService {
 
     private static final int DAMAGE_INTERVAL = 30;
 

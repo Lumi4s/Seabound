@@ -1,7 +1,7 @@
-package io.github.reversebreathing.listeners;
+package io.github.seabound.listeners;
 
-import io.github.reversebreathing.player.PlayerManager;
-import io.github.reversebreathing.service.ReverseBreathingService;
+import io.github.seabound.player.PlayerManager;
+import io.github.seabound.service.SeaboundService;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,11 +10,11 @@ import org.bukkit.event.entity.EntityAirChangeEvent;
 
 public final class PlayerListener implements Listener {
     private final PlayerManager playerManager;
-    private final ReverseBreathingService reverseBreathingService;
+    private final SeaboundService seaboundService;
 
-    public PlayerListener(PlayerManager playerManager, ReverseBreathingService reverseBreathingService) {
+    public PlayerListener(PlayerManager playerManager, SeaboundService seaboundService) {
         this.playerManager = playerManager;
-        this.reverseBreathingService = reverseBreathingService;
+        this.seaboundService = seaboundService;
     }
 
     @EventHandler

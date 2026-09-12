@@ -1,4 +1,4 @@
-package io.github.reversebreathing.player;
+package io.github.seabound.player;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
