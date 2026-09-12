@@ -1,6 +1,6 @@
 name: Seabound
 version: '${version}'
-description: Reverses the breathing system for selected players.
+description: Reverses breathing and movement physiology for selected players (underwater breathing, land sliding, and fast swimming).
 author: Lumi4s
 
 main: io.github.seabound.Seabound
@@ -9,5 +9,5 @@ load: POSTWORLD
 
 permissions:
   seabound.admin:
-    description: Allows managing Seabound reverse breathing system
+    description: Allows managing Seabound reverse breathing and movement systems
     default: op
