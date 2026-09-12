@@ -1,7 +1,25 @@
-# Seabound configuration file
-# List of UUIDs of players with the reverse breathing system enabled.
-# You can manage this list using:
-#   /seabound add <player>
-#   /seabound remove <player>
-#   /seabound list
+# ===================================================================
+#                      Seabound Configuration
+# ===================================================================
+
+# List of UUIDs of players with reverse breathing enabled.
+# Managed in-game via: /seabound <add|remove|list>
 players: []
+
+# Movement mechanics for Seabound players
+movement:
+  # Sliding on land (simulates sliding as if on ice)
+  land-sliding:
+    # Whether land sliding is enabled
+    enabled: true
+    # Momentum retention factor.
+    # Safe recommended range: 1.02 - 1.10. Default: 1.05
+    friction-multiplier: 1.05
+
+  # Fast swimming boost underwater
+  fast-swimming:
+    # Whether fast swimming is enabled
+    enabled: true
+    # Speed multiplier when swimming underwater.
+    # Safe recommended range: 1.15 - 1.50. Default: 1.25
+    speed-multiplier: 1.25

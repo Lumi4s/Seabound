@@ -1,6 +1,6 @@
 # Seabound
 
-**Seabound** is a PaperMC plugin that reverses the breathing system for designated players. Instead of breathing on land and drowning underwater, affected players thrive underwater and suffocate when on dry land.
+**Seabound** is a PaperMC plugin that reverses the breathing and movement physiology for designated players. Instead of breathing on land and drowning underwater, affected players thrive underwater and suffocate on dry land, slide on solid ground as if walking on smooth ice, and swim with dolphin-like speed.
 
 ---
 
@@ -11,9 +11,11 @@
 - 🌧️ **Rain Breathing**: Being in rain allows selected players to breathe normally on land.
 - 🧪 **Potions & Conduits**: The `Water Breathing` effect and `Conduit Power` protect selected players on land.
 - 🪖 **Respiration Support**: The `Respiration` enchantment reduces the chance of losing air on land, just like it does underwater in vanilla Minecraft.
-- 🛡️ **Targeted Effect**: Only selected players are affected; all other players retain standard Minecraft breathing mechanics.
-- 💾 **Persistence**: Selected players are stored by UUID in `config.yml` and persist across server restarts.
-- 🎮 **GameMode Aware**: Players in Creative or Spectator mode are immune to air loss and drowning.
+- ⛸️ **Land Sliding (Ice Effect)**: Selected players slide across solid ground on land with reduced friction, simulating an aquatic creature out of water.
+- 🐬 **Fast Swimming**: Selected players swim with enhanced speed and agility underwater.
+- 🛡️ **Targeted Effect**: Only selected players are affected; all other players retain standard Minecraft breathing and movement mechanics.
+- 💾 **Persistence**: Selected players and movement configuration are stored in `config.yml` and persist across server restarts.
+- 🎮 **GameMode Aware**: Players in Creative or Spectator mode are immune to air loss and sliding.
 
 ---
 
@@ -26,6 +28,11 @@ All commands require operator status (`op`) or the permission `seabound.admin`.
 | `/seabound add <player>` | Enables the reverse breathing system for a player. | `seabound.admin` (op) |
 | `/seabound remove <player>` | Disables reverse breathing and restores player's air. | `seabound.admin` (op) |
 | `/seabound list` | Lists all players currently using reverse breathing. | `seabound.admin` (op) |
+| `/seabound info` | Displays an interactive guide with recommended and current configuration values. | `seabound.admin` (op) |
+| `/seabound config get <key>` | Views the current value of a configuration parameter. | `seabound.admin` (op) |
+| `/seabound config set <key> <value>` | Updates a configuration parameter and saves it to `config.yml`. | `seabound.admin` (op) |
+| `/seabound config reset` | Resets all movement parameters to default recommended values. | `seabound.admin` (op) |
+| `/seabound config reload` | Reloads configuration values from `config.yml`. | `seabound.admin` (op) |
 
 ---
 
@@ -34,11 +41,32 @@ All commands require operator status (`op`) or the permission `seabound.admin`.
 Settings are saved in `plugins/Seabound/config.yml`:
 
 ```yaml
-# Seabound configuration file
-# List of UUIDs of players with the reverse breathing system enabled.
+# Seabound Configuration
 players:
   - "00000000-0000-0000-0000-000000000000"
+
+movement:
+  # Sliding on land (simulates sliding as if on ice)
+  land-sliding:
+    enabled: true
+    # Momentum retention factor (1.01 - 1.20). Default: 1.05
+    friction-multiplier: 1.05
+
+  # Fast swimming boost underwater
+  fast-swimming:
+    enabled: true
+    # Speed boost multiplier (1.05 - 2.50). Default: 1.25
+    speed-multiplier: 1.25
 ```
+
+### Configuration Parameters Guide
+
+| Parameter | Default | Recommended Range | Description & Tips |
+| :--- | :---: | :---: | :--- |
+| `land-sliding.enabled` | `true` | `true` / `false` | Enables/disables ice-like sliding on solid ground. |
+| `land-sliding.friction-multiplier` | `1.05` | `1.02` - `1.08` | Momentum retention. `1.05` gives a smooth ice slide. Values `> 1.12` may cause anticheats to flag high movement speed. |
+| `fast-swimming.enabled` | `true` | `true` / `false` | Enables/disables enhanced underwater swim speed. |
+| `fast-swimming.speed-multiplier` | `1.25` | `1.15` - `1.40` | Swim boost. `1.25` feels natural and dolphin-like. Values `> 1.60` give extreme torpedo-like speed. |
 
 ---
 
