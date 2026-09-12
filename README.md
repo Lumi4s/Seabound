@@ -1,4 +1,4 @@
-# **Reverse Breathing**
+# **Seabound**
 
 Seabound is a simple plugin that reverses the *breathing system* for selected players.
 
