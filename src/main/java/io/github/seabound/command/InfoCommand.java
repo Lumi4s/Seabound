@@ -38,6 +38,8 @@ public class InfoCommand {
                         .append(Component.text(": Current: ", NamedTextColor.GRAY))
                         .append(Component.text(config.isFastSwimmingEnabled(), config.isFastSwimmingEnabled() ? NamedTextColor.GREEN : NamedTextColor.RED))
                         .append(Component.text(" (default: true)", NamedTextColor.DARK_AQUA))
+                        .hoverEvent(HoverEvent.showText(Component.text("Click to toggle")))
+                        .clickEvent(ClickEvent.suggestCommand("/seabound config set fast-swimming.enabled " + !config.isFastSwimmingEnabled()))
         );
         sender.sendMessage(
                 Component.text("  • ", NamedTextColor.DARK_GRAY)
@@ -51,9 +53,64 @@ public class InfoCommand {
                         .append(Component.text("1.15 - 1.50", NamedTextColor.WHITE))
                         .append(Component.text(" (max: 2.50)", NamedTextColor.DARK_GRAY))
         );
+
+        sender.sendMessage(Component.empty());
         sender.sendMessage(
-                Component.text("    Advice: ", NamedTextColor.BLUE)
-                        .append(Component.text("1.25 provides natural and smooth acceleration (like a dolphin's).", NamedTextColor.GRAY))
+                Component.text("Underwater Vision:", NamedTextColor.GOLD, TextDecoration.BOLD)
+        );
+        sender.sendMessage(
+                Component.text("  • ", NamedTextColor.DARK_GRAY)
+                        .append(Component.text("vision.enabled", NamedTextColor.YELLOW))
+                        .append(Component.text(": Current: ", NamedTextColor.GRAY))
+                        .append(Component.text(config.isVisionEnabled(), config.isVisionEnabled() ? NamedTextColor.GREEN : NamedTextColor.RED))
+                        .append(Component.text(" (default: true)", NamedTextColor.DARK_AQUA))
+                        .hoverEvent(HoverEvent.showText(Component.text("Click to toggle")))
+                        .clickEvent(ClickEvent.suggestCommand("/seabound config set vision.enabled " + !config.isVisionEnabled()))
+        );
+        sender.sendMessage(
+                Component.text("  • ", NamedTextColor.DARK_GRAY)
+                        .append(Component.text("vision.default-enabled", NamedTextColor.YELLOW))
+                        .append(Component.text(": Current: ", NamedTextColor.GRAY))
+                        .append(Component.text(config.isVisionDefaultEnabled(), config.isVisionDefaultEnabled() ? NamedTextColor.GREEN : NamedTextColor.RED))
+                        .append(Component.text(" (default: true)", NamedTextColor.DARK_AQUA))
+        );
+        sender.sendMessage(
+                Component.text("  • ", NamedTextColor.DARK_GRAY)
+                        .append(Component.text("vision.hotkey-toggle", NamedTextColor.YELLOW))
+                        .append(Component.text(": Current: ", NamedTextColor.GRAY))
+                        .append(Component.text(config.isVisionHotkeyEnabled(), config.isVisionHotkeyEnabled() ? NamedTextColor.GREEN : NamedTextColor.RED))
+                        .append(Component.text(" (default: true, Shift+F)", NamedTextColor.DARK_AQUA))
+        );
+
+        sender.sendMessage(Component.empty());
+        sender.sendMessage(
+                Component.text("Guardians & Monuments:", NamedTextColor.GOLD, TextDecoration.BOLD)
+        );
+        sender.sendMessage(
+                Component.text("  • ", NamedTextColor.DARK_GRAY)
+                        .append(Component.text("guardians.enabled", NamedTextColor.YELLOW))
+                        .append(Component.text(": Current: ", NamedTextColor.GRAY))
+                        .append(Component.text(config.isGuardiansEnabled(), config.isGuardiansEnabled() ? NamedTextColor.GREEN : NamedTextColor.RED))
+                        .append(Component.text(" (default: true)", NamedTextColor.DARK_AQUA))
+                        .hoverEvent(HoverEvent.showText(Component.text("Click to toggle")))
+                        .clickEvent(ClickEvent.suggestCommand("/seabound config set guardians.enabled " + !config.isGuardiansEnabled()))
+        );
+        sender.sendMessage(
+                Component.text("  • ", NamedTextColor.DARK_GRAY)
+                        .append(Component.text("guardians.retaliate", NamedTextColor.YELLOW))
+                        .append(Component.text(": Current: ", NamedTextColor.GRAY))
+                        .append(Component.text(config.isGuardiansRetaliate() ? "Neutral (defends)" : "Passive (never attacks)",
+                                config.isGuardiansRetaliate() ? NamedTextColor.GREEN : NamedTextColor.AQUA))
+                        .append(Component.text(" (default: true)", NamedTextColor.DARK_AQUA))
+                        .hoverEvent(HoverEvent.showText(Component.text("Click to toggle Neutral/Passive")))
+                        .clickEvent(ClickEvent.suggestCommand("/seabound config set guardians.retaliate " + !config.isGuardiansRetaliate()))
+        );
+        sender.sendMessage(
+                Component.text("  • ", NamedTextColor.DARK_GRAY)
+                        .append(Component.text("guardians.protect-from-fatigue", NamedTextColor.YELLOW))
+                        .append(Component.text(": Current: ", NamedTextColor.GRAY))
+                        .append(Component.text(config.isGuardiansProtectFatigue(), config.isGuardiansProtectFatigue() ? NamedTextColor.GREEN : NamedTextColor.RED))
+                        .append(Component.text(" (default: true)", NamedTextColor.DARK_AQUA))
         );
 
         sender.sendMessage(Component.empty());

@@ -101,7 +101,10 @@ public class ConfigCommand {
                                                                     String key = StringArgumentType.getString(context, "key");
                                                                     String canonical = config.canonicalKey(key);
                                                                     if (canonical != null) {
-                                                                        if (canonical.endsWith(".enabled")) {
+                                                                        if (canonical.endsWith(".enabled")
+                                                                                || canonical.equals("guardians.retaliate")
+                                                                                || canonical.equals("guardians.protect-from-fatigue")
+                                                                                || canonical.equals("vision.hotkey-toggle")) {
                                                                             builder.suggest("true");
                                                                             builder.suggest("false");
                                                                         } else if (canonical.contains("speed")) {

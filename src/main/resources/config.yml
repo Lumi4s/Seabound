@@ -15,3 +15,26 @@ movement:
     # Swimming speed multiplier (1.05 - 2.50). Default: 1.25
     # Recommended: 1.15 - 1.50
     speed-multiplier: 1.25
+
+# Underwater vision mechanics
+vision:
+  # Whether underwater night vision feature is enabled globally
+  enabled: true
+  # Default state for new Seabound players (true = on, false = off)
+  default-enabled: true
+  # Allow players to toggle vision with Shift+F while in water
+  hotkey-toggle: true
+
+# Guardian & Elder Guardian behavior towards Seabound players
+guardians:
+  # Whether guardians ignore Seabound players
+  enabled: true
+  # If true, guardians will defend themselves if attacked by a player (Neutral mode).
+  # If false, guardians are completely peaceful and will never attack (Passive mode).
+  retaliate: true
+  # Protect Seabound players from Elder Guardian's Mining Fatigue curse
+  protect-from-fatigue: true
+
+# Per-player vision preferences overrides (UUID: true/false).
+# Automatically managed when players toggle vision with /seabound vision or Shift+F.
+player-vision: {}
