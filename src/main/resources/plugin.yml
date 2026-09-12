@@ -1,6 +1,13 @@
 name: Seabound
 version: '${version}'
+description: Reverses the breathing system for selected players.
+author: Lumi4s
 
 main: io.github.seabound.Seabound
 api-version: '26.2'
 load: POSTWORLD
+
+permissions:
+  seabound.admin:
+    description: Allows managing Seabound reverse breathing system
+    default: op

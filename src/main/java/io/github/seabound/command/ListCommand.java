@@ -7,6 +7,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.command.CommandSender;
 
 public class ListCommand {
 
@@ -14,23 +15,27 @@ public class ListCommand {
             PlayerManager playerManager
     ) {
         return Commands.literal("list")
+                .requires(source -> source.getSender().isOp() || source.getSender().hasPermission("seabound.admin"))
                 .executes(context -> {
-                            if (!context.getSource().getSender().isOp()) {
-                                context.getSource()
-                                        .getSender()
-                                        .sendMessage(Component.text("Only for operators!",
-                                                NamedTextColor.RED));
-                                return 0;
-                            }
+                    CommandSender sender = context.getSource().getSender();
+                    if (!sender.isOp() && !sender.hasPermission("seabound.admin")) {
+                        sender.sendMessage(Component.text("Only for operators!",
+                                NamedTextColor.RED));
+                        return 0;
+                    }
 
-                            context.getSource()
-                                    .getSender()
-                                    .sendPlainMessage(
-                                            playerManager.toString()
-                                    );
+                    if (playerManager.getPlayers().isEmpty()) {
+                        sender.sendMessage(Component.text("Seabound list is empty.",
+                                NamedTextColor.YELLOW));
+                        return Command.SINGLE_SUCCESS;
+                    }
 
-                            return Command.SINGLE_SUCCESS;
-                        }
-                );
+                    sender.sendMessage(
+                            Component.text("Seabound players: ", NamedTextColor.AQUA)
+                                    .append(Component.text(playerManager.toString(), NamedTextColor.WHITE))
+                    );
+
+                    return Command.SINGLE_SUCCESS;
+                });
     }
 }

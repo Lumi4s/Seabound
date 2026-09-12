@@ -1,1 +1,7 @@
-players: [ ]
+# Seabound configuration file
+# List of UUIDs of players with the reverse breathing system enabled.
+# You can manage this list using:
+#   /seabound add <player>
+#   /seabound remove <player>
+#   /seabound list
+players: []

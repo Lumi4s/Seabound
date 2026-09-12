@@ -9,6 +9,7 @@ public class SeaboundCommand {
 
     public static LiteralCommandNode<CommandSourceStack> create(PlayerManager playerManager) {
         return Commands.literal("seabound")
+                .requires(source -> source.getSender().isOp() || source.getSender().hasPermission("seabound.admin"))
                 .then(AddCommand.create(playerManager))
                 .then(RemoveCommand.create(playerManager))
                 .then(ListCommand.create(playerManager))

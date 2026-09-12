@@ -1,7 +1,7 @@
 package io.github.seabound;
 
 import io.github.seabound.command.SeaboundCommand;
-import io.github.seabound.listeners.PlayerListener;
+import io.github.seabound.listener.PlayerListener;
 import io.github.seabound.player.PlayerManager;
 import io.github.seabound.service.SeaboundService;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -38,7 +38,7 @@ public final class Seabound extends JavaPlugin {
                     for (UUID uuid : playerManager.getPlayers()) {
                         Player player = Bukkit.getPlayer(uuid);
 
-                        if (player != null) {
+                        if (player != null && player.isOnline()) {
                             seaboundService.tick(player);
                         }
                     }
@@ -46,7 +46,6 @@ public final class Seabound extends JavaPlugin {
                 0L,
                 1L
         );
-
     }
 
     @Override

@@ -3,9 +3,11 @@ package io.github.seabound.player;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class PlayerManager {
 
@@ -17,19 +19,30 @@ public class PlayerManager {
     }
 
     public void load() {
-        for (String uuid : plugin.getConfig().getStringList("players")) {
-            players.add(UUID.fromString(uuid));
+        players.clear();
+        for (String uuidStr : plugin.getConfig().getStringList("players")) {
+            try {
+                players.add(UUID.fromString(uuidStr));
+            } catch (IllegalArgumentException e) {
+                plugin.getLogger().warning("Skipping invalid UUID in config: " + uuidStr);
+            }
         }
     }
 
-    public void add(UUID uuid) {
-        players.add(uuid);
-        save();
+    public boolean add(UUID uuid) {
+        boolean added = players.add(uuid);
+        if (added) {
+            save();
+        }
+        return added;
     }
 
-    public void remove(UUID uuid) {
-        players.remove(uuid);
-        save();
+    public boolean remove(UUID uuid) {
+        boolean removed = players.remove(uuid);
+        if (removed) {
+            save();
+        }
+        return removed;
     }
 
     public boolean contains(UUID uuid) {
@@ -47,32 +60,28 @@ public class PlayerManager {
         plugin.saveConfig();
     }
 
+    public String uuidToName(UUID uuid) {
+        String name = Bukkit.getOfflinePlayer(uuid).getName();
+        return name != null ? name : uuid.toString();
+    }
 
+    @Deprecated
     public String UUIDtoName(UUID uuid) {
-        return Bukkit.getOfflinePlayer(uuid).getName();
+        return uuidToName(uuid);
     }
 
     public Set<UUID> getPlayers() {
-        return players;
+        return Collections.unmodifiableSet(players);
     }
-
 
     @Override
     public String toString() {
-        StringBuilder listOfAllPlayers = new StringBuilder();
-
-        for (UUID uuid : players) {
-            if (!listOfAllPlayers.isEmpty()) {
-                listOfAllPlayers.append(", ");
-            }
-
-            listOfAllPlayers.append(UUIDtoName(uuid));
+        if (players.isEmpty()) {
+            return "List is empty.";
         }
 
-        if (listOfAllPlayers.isEmpty()) {
-            listOfAllPlayers.append("List is empty.");
-        }
-
-        return listOfAllPlayers.toString();
+        return players.stream()
+                .map(this::uuidToName)
+                .collect(Collectors.joining(", "));
     }
 }

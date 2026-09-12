@@ -5,17 +5,25 @@
 .gradle
 
 # Gradle build folder
-build
+build/
+
+# Eclipse / VS Code build outputs and configs
+bin/
+.vscode/
+.classpath
+.project
+.settings/
 
 # IntelliJ
 out/
-.idea
+.idea/
 *.iml
-# mpeltonen/sbt-idea plugin
 .idea_modules/
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Logs
+*.log
 hs_err_pid*
 
 # Common working directory
-run
+run/
+
