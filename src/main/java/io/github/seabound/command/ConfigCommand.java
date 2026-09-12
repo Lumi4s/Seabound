@@ -104,14 +104,11 @@ public class ConfigCommand {
                                                                         if (canonical.endsWith(".enabled")) {
                                                                             builder.suggest("true");
                                                                             builder.suggest("false");
-                                                                        } else if (canonical.contains("friction")) {
-                                                                            builder.suggest("1.03");
-                                                                            builder.suggest("1.05");
-                                                                            builder.suggest("1.08");
                                                                         } else if (canonical.contains("speed")) {
                                                                             builder.suggest("1.15");
                                                                             builder.suggest("1.25");
                                                                             builder.suggest("1.40");
+                                                                            builder.suggest("1.50");
                                                                         }
                                                                     }
                                                                     return builder.buildFuture();

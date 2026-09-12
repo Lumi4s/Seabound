@@ -50,6 +50,9 @@ public class RemoveCommand {
 
                                     playerManager.remove(player.getUniqueId());
                                     player.setRemainingAir(player.getMaximumAir());
+                                    if (player.hasPotionEffect(org.bukkit.potion.PotionEffectType.DOLPHINS_GRACE)) {
+                                        player.removePotionEffect(org.bukkit.potion.PotionEffectType.DOLPHINS_GRACE);
+                                    }
 
                                     sender.sendMessage(
                                             Component.text("Removed " + player.getName() + " from Seabound.",

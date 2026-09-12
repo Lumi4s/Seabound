@@ -35,8 +35,6 @@ public final class PlayerListener implements Listener {
         }
 
         if (seaboundService.canBreathe(player)) {
-            // Player can breathe (underwater, in rain, or under potion effects).
-            // Prevent vanilla underwater mechanics from decreasing air.
             if (event.getAmount() < player.getRemainingAir()) {
                 event.setCancelled(true);
                 if (player.getRemainingAir() < player.getMaximumAir()) {
@@ -44,8 +42,6 @@ public final class PlayerListener implements Listener {
                 }
             }
         } else {
-            // Player is on land and cannot breathe.
-            // Prevent vanilla from automatically replenishing air.
             if (event.getAmount() > player.getRemainingAir()) {
                 event.setCancelled(true);
             }
