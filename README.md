@@ -15,8 +15,8 @@ Seabound is a simple plugin that reverses the *breathing system* for selected pl
 
 ### Commands
 
-* `/breathing add <player>` - Add a player to the reverse breathing system.
-* `/breathing remove <player>` - Remove a player from the reverse breathing system.
-* `/breathing list` - Display all players currently using the reverse breathing system.
+* `/seabound add <player>` - Add a player to the reverse breathing system.
+* `/seabound remove <player>` - Remove a player from the reverse breathing system.
+* `/seabound list` - Display all players currently using the reverse breathing system.
 
 ## TESTED ON MINECRAFT 26.2 AND PAPERMC 26.2
